@@ -38,8 +38,9 @@ void loop() {
         }
         delay (200);        //cycle delay
     }
-    fill_solid( &(leds[0]), arrayData[2][0] /*number of leds*/, CRGB(arrayData[0][0],arrayData[0][1],arrayData[0][2]) );        //main LEDs
-    fill_solid( &(leds[arrayData[2][0]]), NUM_LEDS - arrayData[2][0] /*number of leds*/, CRGB(arrayData[1][0],arrayData[1][1],arrayData[1][2]) );       //ambiant LEDs
+    fill_solid( &(leds[(NUM_LEDS / 2) - (arrayData[2][0] / 2)])/*start location*/, arrayData[2][0] /*number of leds*/, CRGB(arrayData[0][0],arrayData[0][1],arrayData[0][2]) );        //main LEDs
+    fill_solid( &(leds[(NUM_LEDS / 2) + (arrayData[2][0] / 2)])/*start location*/, (NUM_LEDS /  2) - (arrayData[2][0] / 2) /*number of leds*/, CRGB(arrayData[1][0],arrayData[1][1],arrayData[1][2]) );       //ambiant left LEDs
+    fill_solid( &(leds[0])/*start location*/, (NUM_LEDS /  2) - (arrayData[2][0] / 2) /*number of leds*/, CRGB(arrayData[1][0],arrayData[1][1],arrayData[1][2]) );       //ambiant right LEDs
     FastLED.show();     // start show
     delay (500);
 }
