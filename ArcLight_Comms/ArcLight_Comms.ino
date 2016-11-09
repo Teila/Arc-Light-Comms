@@ -1,7 +1,7 @@
 #include <FastLED.h>
 #include <string.h>
 
-#define NUM_LEDS 10     //number of total leds in strip
+#define NUM_LEDS 12     //number of total leds in strip
 #define DATA_PIN 6      //control pin
 
 String str2 = "$";      //start data flag
@@ -24,15 +24,11 @@ void setup() {
 
 void loop() {
     while (Serial.available() > 0) {        // wait til data comes in over serial
-//        Serial.println("DATA:");            // Verify data detection
         String str = Serial.readString();
-//        Serial.println(str);                // Verify Data recieved
         if (str.startsWith("$")) {      //if str starts with $
             if (str.endsWith("*")) {        //and ends with *
                 str.remove(0, 1);
                 str.remove(35);
-//                Serial.println("stripped:");      //status 
-//                Serial.println(str);      //Debug stripped data
                 parseData(str);     // call parse code here
             }
         }
@@ -51,18 +47,15 @@ void parseData(String com) {
     int splitdata[9];       //total split values
     int cnt1 = 0;
     while (split != NULL) {
-        splitdata[cnt1] = atoi(split);        
-            //Serial.println(cnt1);     // debug steps
+        splitdata[cnt1] = atoi(split);
         cnt1++;
         split = strtok(NULL,",");
     }
     int cnt2 = 0;
     for (x = 0; x < 3; x++) {
-//      Serial.println(x);      // debug steps
         if (x < 2) {
             for (y = 0; y < 4; y++) {
                 arrayData[x][y] = splitdata[cnt2];
-//                  Serial.println(cnt2);       // debug steps
                 cnt2++;
             }
         } else {
