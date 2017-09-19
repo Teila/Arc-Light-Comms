@@ -32,13 +32,13 @@ void loop() {
                 parseData(str);     // call parse code here
             }
         }
-        delay (10);        //cycle delay
+        //delay (10);        //cycle delay
     }
     fill_solid( &(leds[(NUM_LEDS / 2) - (arrayData[2][0] / 2)])/*start location*/, arrayData[2][0] /*number of leds*/, CRGB(arrayData[0][0],arrayData[0][1],arrayData[0][2]) );        //main LEDs
     fill_solid( &(leds[(NUM_LEDS / 2) + (arrayData[2][0] / 2)])/*start location*/, (NUM_LEDS /  2) - (arrayData[2][0] / 2) /*number of leds*/, CRGB(arrayData[1][0],arrayData[1][1],arrayData[1][2]) );       //ambiant left LEDs
     fill_solid( &(leds[0])/*start location*/, (NUM_LEDS /  2) - (arrayData[2][0] / 2) /*number of leds*/, CRGB(arrayData[1][0],arrayData[1][1],arrayData[1][2]) );       //ambiant right LEDs
     FastLED.show();     // start show
-    delay (1);
+    //delay (1);
 }
 void parseData(String com) {
     char com_new[com.length() + 1];
