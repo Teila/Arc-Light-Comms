@@ -16,7 +16,7 @@ int arrayData[3][4];        //array to be built for ((r1,g1,b1,a1)(r2,b2,g2,a2)(
 CRGB leds[NUM_LEDS];
 
 void setup() {
-    Serial.begin(115200);
+    Serial.begin(9600);
     Serial.flush();     //flush comms
     counter = 0;
     FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);        //setup strip controls
@@ -32,13 +32,13 @@ void loop() {
                 parseData(str);     // call parse code here
             }
         }
-        delay (10);        //cycle delay
+        //delay (10);        //cycle delay
     }
     fill_solid( &(leds[(NUM_LEDS / 2) - (arrayData[2][0] / 2)])/*start location*/, arrayData[2][0] /*number of leds*/, CRGB(arrayData[0][0],arrayData[0][1],arrayData[0][2]) );        //main LEDs
     fill_solid( &(leds[(NUM_LEDS / 2) + (arrayData[2][0] / 2)])/*start location*/, (NUM_LEDS /  2) - (arrayData[2][0] / 2) /*number of leds*/, CRGB(arrayData[1][0],arrayData[1][1],arrayData[1][2]) );       //ambiant left LEDs
     fill_solid( &(leds[0])/*start location*/, (NUM_LEDS /  2) - (arrayData[2][0] / 2) /*number of leds*/, CRGB(arrayData[1][0],arrayData[1][1],arrayData[1][2]) );       //ambiant right LEDs
     FastLED.show();     // start show
-    delay (1);
+    //delay (1);
 }
 void parseData(String com) {
     char com_new[com.length() + 1];
