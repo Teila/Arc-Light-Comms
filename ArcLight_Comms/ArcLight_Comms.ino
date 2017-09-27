@@ -16,7 +16,7 @@ int arrayData[3][4];        //array to be built for ((r1,g1,b1,a1)(r2,b2,g2,a2)(
 CRGB leds[NUM_LEDS];
 
 void setup() {
-    Serial.begin(115200);
+    Serial.begin(9600);
     Serial.flush();     //flush comms
     counter = 0;
     FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);        //setup strip controls
